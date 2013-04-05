@@ -1,24 +1,50 @@
+//branch: json
 var map;
 
-var points = [
-[35.849, -86.362, 'Marker X', 'stop1'],
-[35.846, -86.362, 'Marker Y', 'stop2'],
-[35.852, -86.362, 'Marker Z', 'stop3'],
-[35.852, -86.360, 'Marker A', 'stop4'],
-[35.852, -86.355, 'Marker B', 'stop5'],
-[35.852, -86.350, 'Marker C', 'stop6'],
-[35.852, -86.347, 'Marker D', 'stop7'],
-[35.849631, -86.368654, 'Kirksey Old Main', 'KOM1']
-];
+var points = /*jQuery.getJSON("landmarks.json");*/
 
-var jsonfile = jQuery.getJSON("landmarks.json");
+{"KOM1": {
+  "lat": 35.849631,
+  "lng": -86.368654,
+  "title": "Kirksey Old Main",
+  "media": {
+    "type": "image",
+    "src": "kom1.jpg"
+  }
+},
+"stop1": {
+  "lat": 35.849,
+  "lng": -86.362,
+  "title": "Stop 1",
+  "media": {
+    "type": "image",
+    "src": "kom1.jpg"
+  }
+},
+"stop2": {
+  "lat": 35.846,
+  "lng": -86.362,
+  "title": "Stop 2",
+  "media": {
+    "type": "image",
+    "src": "kom1.jpg"
+  }
+},
+"stop3": {
+  "lat": 35.852,
+  "lng": -86.362,
+  "title": "Stop 3"
+}
+}};
 
-        function initialize() {
-          console.log('initializing Google map');
+alert(points.landmarks.KOM1.lat);
 
-          var defaultLatlng = new google.maps.LatLng(35.849057,-86.362374);
-          var thisLatlng = defaultLatlng;
-          
+function initialize() {
+  console.log('initializing Google map');
+
+  var defaultLatlng = new google.maps.LatLng(35.849057,-86.362374);
+  var thisLatlng = defaultLatlng;
+  
 //          function getLocation()
 //          {
 //            if (navigator.geolocation)
@@ -54,50 +80,21 @@ var jsonfile = jQuery.getJSON("landmarks.json");
 //          }
 //          getLocation();
 
-          var mapOptions = {
-            zoom: 15,
-            center: thisLatlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            mapTypeControl: false,
-            streetViewControl: false,
-          }
+var mapOptions = {
+  zoom: 15,
+  center: thisLatlng,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  mapTypeControl: false,
+  streetViewControl: false,
+}
 
-          map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
-          google.maps.event.addListener(map, 'click', function(e) {
-            openMapDrawer();
-            map.panTo(thisLatlng);
-            map.setZoom(15);
-          })
-=======
-      var points = [
-          [35.849, -86.362, 'Marker X', 'stop1'],
-          [35.846, -86.362, 'Marker Y', 'stop2'],
-          [35.852, -86.362, 'Marker Z', 'stop3'],
-          [35.852, -86.360, 'Marker A', 'stop4'],
-          [35.852, -86.355, 'Marker B', 'stop5'],
-          [35.852, -86.350, 'Marker C', 'stop6'],
-          [35.852, -86.347, 'Marker D', 'stop7']
-        ];
-        //need to add arraygen logic, possibly with JSON?
-
-      function initialize() {
-        console.log('initializing Google map');
-
-        var myLatlng = new google.maps.LatLng(35.849057,-86.362374);
-
-        var mapOptions = {
-          zoom: 15,
-          center: myLatlng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          mapTypeControl: false,
-          streetViewControl: false,
-        }
-
-        map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
-        google.maps.event.addListener(map, 'click', function(e) {openMapDrawer()})
->>>>>>> 9a978afb81a15fcc002403d54a6d01448f003429
+google.maps.event.addListener(map, 'click', function(e) {
+  openMapDrawer();
+  map.panTo(thisLatlng);
+  map.setZoom(15);
+})
 
         // Add markers to the map from array points.
         for (var i = 0; i < points.length; i++) {
@@ -110,8 +107,6 @@ var jsonfile = jQuery.getJSON("landmarks.json");
           });
           attachPoints(marker, i);
         }
-<<<<<<< HEAD
-
 
         $('#mapDrawer').waypoint(function() {
           console.log('Top collided');
@@ -137,19 +132,13 @@ var jsonfile = jQuery.getJSON("landmarks.json");
         });
 
       };
-=======
-      }
->>>>>>> 9a978afb81a15fcc002403d54a6d01448f003429
 
       function attachPoints(marker, number) {
         var currentTourStop = points[number][3];
         google.maps.event.addListener(marker, 'click', function() {
           //goto point logic
-<<<<<<< HEAD
           console.log('going to ' + currentTourStop);
           //window.location.assign('#' + currentTourStop);
-          offset=-300;
-
           if ($('#mapDrawer').hasClass('open')) 
             {offset=-300} 
           else
@@ -162,44 +151,16 @@ var jsonfile = jQuery.getJSON("landmarks.json");
           $('#mapDrawer').removeClass('open', 400);
         });
       };
-
-=======
-          alert(currentTourStop);
           //window.location.assign('#' + currentTourStop);
           $.smoothScroll({
             scrollTarget: '#' + currentTourStop
           });
-        });
-      };
 
-      var mapDrawerState = 0;
 
->>>>>>> 9a978afb81a15fcc002403d54a6d01448f003429
-      function toggleMapDrawer() {
-        $('#mapDrawer').slideToggle(400);
-      }; 
+          function openMapDrawer() {
+            $.smoothScroll({
+              scrollTarget: '#mapDrawer'
+            });
+            $('#mapDrawer').toggleClass('open', 400);
 
-      function openMapDrawer() {
-<<<<<<< HEAD
-        $.smoothScroll({
-          scrollTarget: '#mapDrawer'
-        });
-        $('#mapDrawer').toggleClass('open', 400);
-
-      };
-
-      function foldMapDrawer() {
-
-        $('#mapDrawer.open').height(originalMapHeight);
-      }
-
-      function unfoldMapDrawer() {
-        $('#mapDrawer').effect('size', {
-          to: {height: $(window).height() },
-          scale: 'box'
-        }, 1000);
-      }
-=======
-        $('#mapDrawer').toggleClass('open', 400);
-      };
->>>>>>> 9a978afb81a15fcc002403d54a6d01448f003429
+          };
