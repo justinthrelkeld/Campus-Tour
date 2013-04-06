@@ -3,7 +3,7 @@ var map;
 
 var points = /*jQuery.getJSON("landmarks.json");*/
 
-{0: {
+[{
   "id": "KOM1",
   "lat": 35.849631,
   "lng": -86.368654,
@@ -14,7 +14,7 @@ var points = /*jQuery.getJSON("landmarks.json");*/
     "src": "kom1.jpg"
   }
 },
-1: {
+{
   "id": "stop1",
   "lat": 35.849,
   "lng": -86.362,
@@ -24,7 +24,7 @@ var points = /*jQuery.getJSON("landmarks.json");*/
     "src": "kom1.jpg"
   }
 },
-2: {
+{
   "id": "stop2",
   "lat": 35.846,
   "lng": -86.362,
@@ -34,15 +34,15 @@ var points = /*jQuery.getJSON("landmarks.json");*/
     "src": "kom1.jpg"
   }
 },
-3: {
+{
   "id": "stop3",
   "lat": 35.852,
   "lng": -86.362,
   "title": "Stop 3"
 }
-};
+];
 
-alert(points[0].lat);
+alert(points.length);
 
 function initialize() {
   console.log('initializing Google map');
@@ -103,8 +103,8 @@ google.maps.event.addListener(map, 'click', function(e) {
 
 // Add markers to the map from array points.
 for (var i = 0; i < points.length; i++) {
-  var location = new google.maps.LatLng(points[i][0],points[i][1]);
-  var title = points[i][2];
+  var location = new google.maps.LatLng(points[i].lat,points[i].lng);
+  var title = points[i].title;
   var marker = new google.maps.Marker({
     position: location,
     title: title,
@@ -139,33 +139,33 @@ $('').waypoint(function(direction) {
 };
 
 function attachPoints(marker, number) {
-  var currentTourStop = points[number][3];
+  var currentTourStop = points[number]["id"];
   google.maps.event.addListener(marker, 'click', function() {
-          //goto point logic
-          console.log('going to ' + currentTourStop);
-          //window.location.assign('#' + currentTourStop);
-          if ($('#mapDrawer').hasClass('open')) 
-            {offset=-300} 
-          else
-            {offset=-15}
+    //goto point logic
+    console.log('going to ' + currentTourStop);
+    //window.location.assign('#' + currentTourStop);
+    if ($('#mapDrawer').hasClass('open')) 
+      {offset=-300} 
+    else
+      {offset=-15}
 
-          $.smoothScroll({
-            scrollTarget: '#' + currentTourStop,
-            offset: offset,
-          });
-          $('#mapDrawer').removeClass('open', 400);
-        });
+    $.smoothScroll({
+      scrollTarget: '#' + currentTourStop,
+      offset: offset,
+    });
+    $('#mapDrawer').removeClass('open', 400);
+  });
 };
-          //window.location.assign('#' + currentTourStop);
-          $.smoothScroll({
-            scrollTarget: '#' + currentTourStop
-          });
+//window.location.assign('#' + currentTourStop);
+$.smoothScroll({
+  scrollTarget: '#' + currentTourStop
+});
 
 
-          function openMapDrawer() {
-            $.smoothScroll({
-              scrollTarget: '#mapDrawer'
-            });
-            $('#mapDrawer').toggleClass('open', 400);
+function openMapDrawer() {
+  $.smoothScroll({
+    scrollTarget: '#mapDrawer'
+  });
+  $('#mapDrawer').toggleClass('open', 400);
 
-          };
+};
