@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
-  <title>Ember Starter Kit</title>
+  <title>MTSU Historic Campus Tour | A Project of the Albert Gore Research Center</title>
 
   <link href="css/styles2.css" type="text/css" rel="stylesheet" />
   <script src="js/landmarks.js"></script>
@@ -25,72 +25,51 @@
 
   <script type="text/x-handlebars">
   {{outlet}}
-</script>
+  </script>
 
-<script type="text/x-handlebars" data-template-name="index">
+  <script type="text/x-handlebars" data-template-name="index">
 
-<header id="top">
-  <img id="logo" src="images/logo.gif" alt="MTSU" />
-  <h1>Historic Campus Tour</h1>
-</header>
-<section id="mapDrawer" class="">
-  <div id="map_canvas"></div>
-</section>
-<nav>
-  <ul>
-    <li>
-      <a href="#stop1">Tour Stop 1</a>
-    </li>
-    <li>
-      <a href="#stop2">Tour Stop 2</a>
-    </li>
-    <li>
-      <a href="#stop3">Tour Stop 3</a>
-    </li>
-    <li>
-      <a href="#stop4">Tour Stop 4</a>
-    </li>
-    <li>
-      <a href="#stop5">Tour Stop 5</a>
-    </li>
-    <li>
-      <a href="#stop6">Tour Stop 6</a>
-    </li>
-    <li>
-      <a href="#stop7">Tour Stop 7</a>
-    </li>
+  <header id="top">
+    <img id="logo" src="images/logo.gif" alt="MTSU" />
+    <h1>Historic Campus Tour</h1>
+  </header>
+  <section id="mapDrawer" class="">
+    <div id="map_canvas"></div>
+  </section>
+  <nav>
 
-  </ul>
-</nav>
-<section id="content">
+  </nav>
+  <section id="content">
 
   {{#each item in model}}
-  <article {{bindAttr id="item.id"}}>
-  <header>
-  <h1>{{item.title}}</h1>
-  </header>
-  {{item.description}}
-  <section class="media">
-  {{#each item.media}}
-  <div><b>media item</b> <br/>type: {{type}} <br/> thumbnail: {{src}} </div>
+    <article {{bindAttr id="item.id"}}>
+      <header>
+        <h2>{{item.title}}</h2>
+      </header>
+      {{item.description}}
+      <section class="media">
+      {{#each item.media}}
+        <aside {{bindAttr class="type"}}>
+          <a {{bindAttr href="url"}}>
+            <h3>{{title}}</h3>
+            <img {{bindAttr src="src"}} />
+          </a>
+        </aside>
+      {{/each}}
+      </section>
+  
+      <footer>
+        <a class="nav prev" href="#prev">Prev</a>
+        <a class="nav next" href="#next">Next</a>
+        <a class="nav top" href="#top">Top</a>
+      </footer>
+    </article>
   {{/each}}
   </section>
+
   <footer>
-  <a class="nav prev" href="#prev">Prev</a>
-  <a class="nav next" href="#next">Next</a>
-  <a class="nav top" href="#top">Top</a>
+    This is the footer of the page. &smile;
   </footer>
-  </article>
-  {{/each}}
-
-
-
-
-</section>
-
-<footer>
-  This is the footer of the page. &smile;
-</footer>
 
   </script>
 

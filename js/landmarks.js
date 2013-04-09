@@ -6,10 +6,12 @@ var points =
   "title": "Kirksey Old Main",
   "description": "This is the KOM",
   "media": 
-    [{
-      "type": "image",
-      "src": "kom1.jpg"
-    }]
+  [{
+    "title": "Media Item 1",
+    "type": "image",
+    "src": "kom1.jpg",
+    "url": "http://mtsu.edu/"
+  }]
 },
 {
   "id": "stop1",
@@ -17,14 +19,18 @@ var points =
   "lng": -86.362,
   "title": "Stop 1",
   "media": 
-    [{
-      "type": "image",
-      "src": "kom1.jpg"
-    },
-    {
-      "type": "image",
-      "src": "kom3.jpg"
-    }]
+  [{
+    "type": "image",
+    "src": "kom1.jpg"
+  },
+  {
+    "type": "image",
+    "src": "kom1.jpg"
+  },
+  {
+    "type": "image",
+    "src": "kom3.jpg"
+  }]
 },
 {
   "id": "stop2",
@@ -32,10 +38,10 @@ var points =
   "lng": -86.362,
   "title": "Stop 2",
   "media": 
-    [{
-      "type": "video",
-      "src": "kom1.jpg"
-    }]
+  [{
+    "type": "video",
+    "src": "kom1.jpg"
+  }]
 },
 {
   "id": "stop3",
