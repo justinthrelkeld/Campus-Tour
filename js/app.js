@@ -1,8 +1,56 @@
+var points = /*jQuery.getJSON('js/landmarks.json', function(data, textStatus, jqxhr) {
+console.log(textStatus); //success
+console.log(jqxhr.status); //200
+console.log('External JSON has loaded.');
+alert('hi');
+});*/ /* This is taking too long. Need to sync up. */
+
+[{
+  "id": "KOM1",
+  "lat": 35.849631,
+  "lng": -86.368654,
+  "title": "Kirksey Old Main",
+  "description": "This is the KOM",
+  "media": 
+    [{
+      "type": "image",
+      "src": "kom1.jpg"
+    }]
+},
+{
+  "id": "stop1",
+  "lat": 35.849,
+  "lng": -86.362,
+  "title": "Stop 1",
+  "media": 
+    [{
+      "type": "image",
+      "src": "kom1.jpg"
+    },
+    {
+      "type": "image",
+      "src": "kom3.jpg"
+    }]
+},
+{
+  "id": "stop2",
+  "lat": 35.846,
+  "lng": -86.362,
+  "title": "Stop 2",
+  "media": 
+    [{
+      "type": "video",
+      "src": "kom1.jpg"
+    }]
+},
+{
+  "id": "stop3",
+  "lat": 35.852,
+  "lng": -86.362,
+  "title": "Stop 3"
+}];
+
 CampusTourApp = Ember.Application.create();
-
-/*jQuery.getScript('js/test.js');*/
-
-var points = jQuery.getJSON('js/landmarks.json');
 
 function initialize() {
   console.log('initializing Google map');
@@ -63,9 +111,9 @@ function initialize() {
 
 
 
-function attachPoints(marker, number) {
-  var currentTourStop = points[number]["id"];
-  google.maps.event.addListener(marker, 'click', function() {
+  function attachPoints(marker, number) {
+    var currentTourStop = points[number]["id"];
+    google.maps.event.addListener(marker, 'click', function() {
     //goto point logic
     console.log('going to ' + currentTourStop);
     //window.location.assign('#' + currentTourStop);
@@ -80,7 +128,7 @@ function attachPoints(marker, number) {
     });
     $('#mapDrawer').removeClass('open', 400);
   });
-};
+  };
 //window.location.assign('#' + currentTourStop);
 $.smoothScroll({
   scrollTarget: '#' + currentTourStop
