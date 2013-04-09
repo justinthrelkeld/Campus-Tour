@@ -1,9 +1,11 @@
-var points = /*jQuery.getJSON('js/landmarks.json', function(data, textStatus, jqxhr) {
+/* moved all this into points.js and loaded into html above apps.js
+
+var points = jQuery.getJSON('js/landmarks.json', function(data, textStatus, jqxhr) {
 console.log(textStatus); //success
 console.log(jqxhr.status); //200
 console.log('External JSON has loaded.');
 alert('hi');
-});*/ /* This is taking too long. Need to sync up. */
+}); // This is taking too long. Need to sync up.
 
 [{
   "id": "KOM1",
@@ -48,7 +50,7 @@ alert('hi');
   "lat": 35.852,
   "lng": -86.362,
   "title": "Stop 3"
-}];
+}];*/
 
 CampusTourApp = Ember.Application.create();
 
