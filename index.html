@@ -2,63 +2,96 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
   <title>Ember Starter Kit</title>
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
-    <link href="css/styles.css" type="text/css" rel="stylesheet" />
 
-</head>
-<body onload="initialize()">
-
-  <script type="text/x-handlebars">
-  {{outlet}}
-  </script>
-
-  <header id="top">
-    <img id="logo" src="images/logo.gif" alt="MTSU" />
-    <h1>Historic Campus Tour</h1>
-  </header>
-  <section id="mapDrawer" class="">
-    <div id="map_canvas"></div>
-  </section>
-  <nav></nav>
-  
-  <script type="text/x-handlebars" data-template-name="index">
-  {{#each item in model}}
-    <article {{bindAttr id="item.id"}}>
-      <header>
-        <h1>{{item.title}}</h1>
-      </header>
-      {{item.description}}
-      <section class="media">
-      {{#each item.media}}
-      <div><b>media item</b> <br/>type: {{type}} <br/> thumbnail: {{src}} </div>
-      {{/each}}
-    </section>
-    <footer>
-      <a class="nav prev" href="#prev">Prev</a>
-      <a class="nav next" href="#next">Next</a>
-      <a class="nav top" href="#top">Top</a>
-    </footer>
-  </article>
-  {{/each}}
-
-  </script>
-
-  <script src="js/libs/jquery-1.9.1.js"></script>
-  <script src="js/libs/handlebars-1.0.0-rc.3.js"></script>
-  <script src="js/libs/ember-1.0.0-rc.2.js"></script>
-  <script src="js/app.js"></script>
-<!--    <script src="js/jquery-ui-1.10.1.custom.js" type="text/javascript"></script>
+  <link href="css/styles2.css" type="text/css" rel="stylesheet" />
+  <script src="js/jquery-1.9.1.js" type="text/javascript"></script>
+  <script src="js/jquery-ui-1.10.1.custom.js" type="text/javascript"></script>
   <script src="js/jquery.smooth-scroll.min.js" type="text/javascript"></script>
   <script src="js/waypoints.min.js" type="text/javascript"></script>
   <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvloktPgM55YJWxAggRuTFD_vO9HkllhY&sensor=true">
-  </script> -->
+  </script>
+  <script src="js/libs/handlebars-1.0.0-rc.3.js"></script>
+  <script src="js/libs/ember-1.0.0-rc.2.js"></script>
+  <script src="js/app.js"></script>
 
-      <footer>
-      This is the footer of the page. &smile;
-    </footer>
+</head>
+
+<body onload="initialize()">
+
+  <script type="text/x-handlebars">
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+
+<header id="top">
+  <img id="logo" src="images/logo.gif" alt="MTSU" />
+  <h1>Historic Campus Tour</h1>
+</header>
+<section id="mapDrawer" class="">
+  <div id="map_canvas"></div>
+</section>
+<nav>
+  <ul>
+    <li>
+      <a href="#stop1">Tour Stop 1</a>
+    </li>
+    <li>
+      <a href="#stop2">Tour Stop 2</a>
+    </li>
+    <li>
+      <a href="#stop3">Tour Stop 3</a>
+    </li>
+    <li>
+      <a href="#stop4">Tour Stop 4</a>
+    </li>
+    <li>
+      <a href="#stop5">Tour Stop 5</a>
+    </li>
+    <li>
+      <a href="#stop6">Tour Stop 6</a>
+    </li>
+    <li>
+      <a href="#stop7">Tour Stop 7</a>
+    </li>
+
+  </ul>
+</nav>
+<section id="content">
+
+  {{#each item in model}}
+  <article {{bindAttr id="item.id"}}>
+  <header>
+  <h1>{{item.title}}</h1>
+  </header>
+  {{item.description}}
+  <section class="media">
+  {{#each item.media}}
+  <div><b>media item</b> <br/>type: {{type}} <br/> thumbnail: {{src}} </div>
+  {{/each}}
+  </section>
+  <footer>
+  <a class="nav prev" href="#prev">Prev</a>
+  <a class="nav next" href="#next">Next</a>
+  <a class="nav top" href="#top">Top</a>
+  </footer>
+  </article>
+  {{/each}}
+
+
+
+
+</section>
+
+<footer>
+  This is the footer of the page. &smile;
+</footer>
+
+  </script>
 
 </body>
 </html>
