@@ -40,6 +40,7 @@
 
   </nav>
   <section id="content">
+  <em>Welcome to the MTSU Historic Campus Tour. Select a point of interest from the map above to learn more about the history of that site.</em>
 
   {{#each item in model}}
     <article {{bindAttr id="item.id"}}>
@@ -50,7 +51,7 @@
       <section class="media">
       {{#each item.media}}
         <aside {{bindAttr class="type"}}>
-          <a {{bindAttr href="url"}}>
+          <a {{bindAttr href="url"}} target="_blank">
             <h3>{{title}}</h3>
             <img {{bindAttr src="thumb"}} />
           </a>
@@ -59,16 +60,15 @@
       </section>
   
       <footer>
-        <a class="nav prev" href="#prev">Prev</a>
-        <a class="nav next" href="#next">Next</a>
-        <a class="nav top" href="#top">Top</a>
+        <a class="nav top" href="#top">Back to Map</a>
       </footer>
     </article>
   {{/each}}
   </section>
 
   <footer>
-    This is the footer of the page. &smile;
+    <p>All content is Copyright &copy; by Middle Tennesee State University 2013</p>
+    <p>Information provided by the historical archives of the <a href="#">Albert Gore Sr. Research Center</a>
   </footer>
 
   </script>
